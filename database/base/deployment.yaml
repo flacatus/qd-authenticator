@@ -46,12 +46,12 @@ spec:
               cpu: "500m"
               memory: "256Mi"
           volumeMounts:
-          - name: postgres-volume-claim
+          - name: data-postgres-1
             mountPath: /work
       volumes:
-        - name: postgres-volume-claim
+        - name: data-postgres-1
           persistentVolumeClaim:
-            claimName: postgres-volume-claim
+            claimName: data-postgres-1
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
