@@ -46,28 +46,13 @@ spec:
               cpu: "500m"
               memory: "256Mi"
           volumeMounts:
-          - name: data
+          - name: postgres-volume-claim
             mountPath: /work
       volumes:
         - name: postgres-volume-claim
           persistentVolumeClaim:
             claimName: postgres-volume-claim
 ---
-apiVersion: v1
-kind: PersistentVolume # Create PV
-metadata:
-  name: postgres-volume # Sets PV name
-  labels:
-    component: postgres
-    app: quality-authenticator
-spec:
-  storageClassName: manual
-  capacity:
-    storage: 1Gi # Sets PV's size
-  accessModes:
-    - ReadWriteMany
-  hostPath:
-    path: "/work" # Sets PV's host path
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim # Create PVC
