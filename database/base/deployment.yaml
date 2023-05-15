@@ -50,5 +50,5 @@ spec:
             mountPath: /work
       volumes:
       - name: data-postgres-1
-        hostPath:
-          path: /work
+        emptyDir:
+          sizeLimit: 500Mi
