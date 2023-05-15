@@ -49,22 +49,6 @@ spec:
           - name: data-postgres-1
             mountPath: /work
       volumes:
-        - name: data-postgres-1
-          persistentVolumeClaim:
-            claimName: data-postgres-1
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: data-postgres-1
-  labels:
-    app: quality-authenticator
-    component: postgres
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 2Gi
-  storageClassName: gp3
-  volumeMode: Filesystem
+      - name: data-postgres-1
+        hostPath:
+          path: /work
