@@ -1,19 +1,17 @@
+---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment # Create a deployment
 metadata:
-  name: postgres
+  name: postgres # Set the name of the deployment
 spec:
-  serviceName: postgres
-  replicas: 1
+  replicas: 1 # Set 3 deployment replicas
   selector:
     matchLabels:
-      app: quality-authenticator
-      component: postgres
+      app: postgres
   template:
     metadata:
       labels:
-        app: quality-authenticator
-        component: postgres
+        app: postgres
     spec:
       containers:
         - name: postgres
@@ -48,11 +46,37 @@ spec:
           volumeMounts:
           - name: data
             mountPath: /work
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 2Gi
+      volumes:
+        - name: postgres-volume-claim
+          persistentVolumeClaim:
+            claimName: postgres-volume-claim
+---
+apiVersion: v1
+kind: PersistentVolume # Create PV
+metadata:
+  name: postgres-volume # Sets PV name
+  labels:
+    type: local # Sets PV's type
+    app: postgres
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi # Sets PV's size
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/work" # Sets PV's host path
+---
+apiVersion: v1
+kind: PersistentVolumeClaim # Create PVC
+metadata:
+  name: postgres-volume-claim # Sets PVC's name
+  labels:
+    app: postgres # Defines app to create PVC for
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi # Sets PVC's size
