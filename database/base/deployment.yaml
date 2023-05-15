@@ -52,3 +52,19 @@ spec:
         - name: postgres-volume-claim
           persistentVolumeClaim:
             claimName: postgres-volume-claim
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: data-postgres-1
+  labels:
+    app: quality-authenticator
+    component: postgres
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: gp3
+  volumeMode: Filesystem
