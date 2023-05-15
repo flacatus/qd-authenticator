@@ -20,17 +20,17 @@ components:
     kubernetes:
       uri: database/base/deployment.yaml
 commands:
-  - id: build-image
+  - id: database-build
     apply:
       component: backend-build
-  - id: deploy-backend
+  - id: database-deploy
     apply:
       component: backend-deploy
   - id: deploy
     composite:
       commands:
-        - build-image
-        - deploy-backend
+        - database-build
+        - database-deploy
       group:
         kind: deploy
         isDefault: true
