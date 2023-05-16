@@ -52,3 +52,17 @@ spec:
       - name: data-postgres-1
         emptyDir:
           sizeLimit: 500Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  type: NodePort
+  selector:
+    app: quality-authenticator
+    component: postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

@@ -16,7 +16,6 @@ components:
       deployment/cpuRequest: 200m
       deployment/memoryLimit: 256Mi
       deployment/memoryRequest: 128Mi
-      deployment/container-port: 5432
     kubernetes:
       uri: database/base/deployment.yaml
 commands:
