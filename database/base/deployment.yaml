@@ -38,6 +38,7 @@ spec:
                 key: storage-user
           ports:
           - containerPort: 5432
+            name: dex-port
           resources:
             requests:
               cpu: "200m"
