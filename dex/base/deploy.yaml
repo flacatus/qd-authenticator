@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dex
-  namespace: dex
   labels:
     app: quality-authenticator
     component: dex
