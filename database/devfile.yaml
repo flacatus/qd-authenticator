@@ -17,7 +17,7 @@ components:
       deployment/memoryLimit: 256Mi
       deployment/memoryRequest: 128Mi
     kubernetes:
-      uri: database/base/deployment.yaml
+      uri: base/deployment.yaml
 commands:
   - id: database-build
     apply:
