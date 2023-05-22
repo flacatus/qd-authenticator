@@ -21,32 +21,6 @@ spec:
       - image: ghcr.io/dexidp/dex:v2.36.0
         name: dex
         command: ["/usr/local/bin/dex", "serve", "/etc/dex/cfg/config.yaml"]
-        env:
-          - name: POSTGRES_DEX_DATABASE
-            valueFrom:
-              secretKeyRef:
-                name: dex-db
-                key: storage-database
-          - name: POSTGRES_DEX_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: dex-db
-                key: storage-password
-          - name: POSTGRES_DEX_USER
-            valueFrom:
-              secretKeyRef:
-                name: dex-db
-                key: storage-user
-          - name: POSTGRES_DEX_HOST
-            valueFrom:
-              secretKeyRef:
-                name: dex-db
-                key: sorage-host
-          - name: POSTGRES_DEX_PORT
-            valueFrom:
-              secretKeyRef:
-                name: dex-db
-                key: storage-port
         resources:
           requests:
             cpu: "200m"
