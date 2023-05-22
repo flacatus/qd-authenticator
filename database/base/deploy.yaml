@@ -51,8 +51,8 @@ spec:
             mountPath: /work
       volumes:
       - name: data-postgres-1
-        emptyDir:
-          sizeLimit: 500Mi
+        persistentVolumeClaim:
+          claimName: data-postgres-1
 ---
 apiVersion: v1
 kind: Service
