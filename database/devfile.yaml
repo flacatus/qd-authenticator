@@ -2,7 +2,7 @@ schemaVersion: 2.2.0
 metadata:
   name: mydevfile
 components:
-  - name: dex-build
+  - name: db-build
     image:
       imageName: quality-dashboard-dex:latest
       dockerfile:
