@@ -63,6 +63,7 @@ spec:
   selector:
     app: quality-authenticator
     component: postgres
+  nodePort: 30036
   ports:
     - protocol: TCP
       port: 5432
