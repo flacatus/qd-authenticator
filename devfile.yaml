@@ -23,14 +23,14 @@ commands:
   - id: build-image
     apply:
       component: database-build
-  - id: deploy
+  - id: deploy-db
     apply:
       component: database-deploy
   - id: deploy
     composite:
       commands:
         - build-image
-        - deploy-backend
+        - deploy-db
       group:
         kind: deploy
         isDefault: true
