@@ -22,10 +22,10 @@ components:
 commands:
   - id: build-image
     apply:
-      component: backend-build
-  - id: deploy-backend
+      component: database-build
+  - id: deploy
     apply:
-      component: backend-deploy
+      component: database-deploy
   - id: deploy
     composite:
       commands:

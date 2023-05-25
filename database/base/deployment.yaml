@@ -56,3 +56,17 @@ spec:
       resources:
         requests:
           storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  type: NodePort
+  selector:
+    app: quality-authenticator
+    component: postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
